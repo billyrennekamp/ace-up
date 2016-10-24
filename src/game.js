@@ -1,5 +1,5 @@
 export let Game = function () {
-  var suits = ['♠', '♡', '♢', '♣']
+  var suits = ['♠', '♥', '♦', '♣']
   this.piles = this.deck = this.discard = {}
 
   this.init = function () {

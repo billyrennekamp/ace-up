@@ -1,6 +1,6 @@
 <template>
-    <li class='list-group-item' @click="moveCard(card)" >
-      {{{card.face}}} {{card.suit}}
+    <li class='list-group-item {{card.suit}}' @click="moveCard(card)" >
+      {{card.face}} {{card.suit}}
     </li>
 </template>
 
@@ -23,6 +23,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+  .♥, .♦{
+    color: red;
+  }
   li:last-of-type{
     height:0px;
     padding-bottom:130%;

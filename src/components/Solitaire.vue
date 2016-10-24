@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <div class="row">
-      <button class='col-md-4 col-xs-4 btn btn-danger' @click="init">Reset</button>
+      <button class='col-md-4 col-xs-4 btn btn-danger' @click="reset">Reset</button>
       <button class='col-md-4 col-xs-4 btn btn-primary' @click="setFour" :disabled="disabled" >
       {{gameOver ? 'Good Game!' :  !clearable ? 'Not Cleared Yet' : disabled ? 'Fill the Empty' : 'Draw Four Cards'}}
       </button>
@@ -11,21 +11,21 @@
       <div class='col-md-2 col-xs-2 deck bg-success'>
         <h1>Deck</h1>
         <ul class='list-group '>
-          <card v-for="card in game.deck" :card.sync="card"></card>
+          <card v-for="card in game.deck" :card="card"></card>
         </ul>
       </div>
       <div class='col-md-8 col-xs-8  bg-info'>
       <h1> Game</h1>
         <div class='col-md-3 col-xs-3 pile bg-default' v-for="pile in game.piles">
             <ul class='list-group'>
-              <card v-for="card in pile" :card.sync="card" ></card>
+              <card v-for="card in pile" :card="card" ></card>
             </ul>
         </div>  
       </div>
       <div class='col-md-2 col-xs-2 discard bg-danger'>
         <h1>Trash</h1>
         <ul class='list-group'>
-          <card v-for="card in game.discard" :card.sync="card"></card>
+          <card v-for="card in game.discard" :card="card"></card>
         </ul>
       </div>
     </div>
@@ -36,18 +36,17 @@
 import {Game} from '../game.js'
 import Card from './Card'
 
+var game = new Game()
+game.init()
+
 export default {
   components: {
     Card
   },
   name: 'Solitaire',
-  ready () {
-    this.game = new Game()
-    this.game.init()
-  },
   data () {
     return {
-      game: {}
+      game: game
     }
   },
   methods: {
@@ -57,7 +56,7 @@ export default {
     clearTops: function () {
       this.game.clearTops()
     },
-    init: function () {
+    reset: function () {
       this.game.init()
     }
   },
@@ -98,6 +97,7 @@ li{
 }
 .deck li, .discard li{
   height:0px;
-  padding:3px 0px;
+  padding-top:3px;
+  padding-bottom:3px;
 }
 </style>
