@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-      <hello></hello>
       <solitaire></solitaire>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
 import Solitaire from './components/Solitaire'
 
 export default {
   components: {
-    Hello,
     Solitaire
   }
 }
