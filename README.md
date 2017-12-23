@@ -1,6 +1,6 @@
 # aces-up
 
-> A Vue.js project
+> A Vue.js project to play Aces Up. See it in action [here](https://okwme.github.io/aces-up).
 
 ## Build Setup
 
